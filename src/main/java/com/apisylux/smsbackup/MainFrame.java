@@ -275,13 +275,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_SourceApplicationActionPerformed
 
     private void ConfigureMySqlMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfigureMySqlMenuActionPerformed
-        JPanel configureMysql = new ConfigureMySql();
         MySqlConfigFrame sqlframe = new MySqlConfigFrame();
-        configureMysql.setVisible(true);
-        configureMysql.setSize(500,500);
-        
-        
-        
         
     }//GEN-LAST:event_ConfigureMySqlMenuActionPerformed
 
