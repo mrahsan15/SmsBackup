@@ -1,9 +1,11 @@
 package com.apisylux.smsbackup;
 
 import com.mongodb.MongoClient;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,11 +28,23 @@ public class CreateConnection {
         }
     }
     public Connection ConnectMysql(){
-        String dbName = "SmsBackup";
+        File file = new File("dbconnect.txt");
+        String Url = "";
+        String Username = "";
+        String Password = "";
+        String dbName = "";
         try{
+            FileReader reader = new FileReader(file);
+            BufferedReader br = new BufferedReader(reader);
+
+            while(br.ready()){
+                Url = br.readLine();
+                dbName = br.readLine();
+                Username = br.readLine();
+                Password = br.readLine();
+            }
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/"+dbName;
-            connection = DriverManager.getConnection(url,"root","root");
+            connection = DriverManager.getConnection(Url+dbName,"root","root");
             
             try{
                 String query = "CREATE DATABASE "+dbName;
